@@ -1,13 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { createBrowserHistory } from "history";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
 
+import * as serviceWorker from './serviceWorker';
+import NewsPage from './Views/home.js';
+import DetailedPage from './Views/detailedPage.js';
+import { Provider } from 'react-redux';
+import store from './store';
+
+const hist = createBrowserHistory();
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <div>
+  <Provider store={store}>
+  <Router history={hist}>
+    <Switch>     
+      <Route path="/NewsPage" component={NewsPage} />
+      <Route path="/DetailedPage/:id" component={DetailedPage} />
+      <Redirect from="/" to="/NewsPage" />
+      </Switch>
+  </Router>
+  </Provider></div>,
   document.getElementById('root')
 );
 
