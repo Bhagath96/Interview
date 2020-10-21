@@ -54,10 +54,9 @@ const useStyles = makeStyles(() => ({
         setFilterdDiscription(DetailedData[0].description)                               
     }
     useEffect(() => { 
-        var id="";
-        console.log(props.match.params.id)
-        //  id=props.location.query.id         
-         id=props.match.params.id         
+        var id="";       
+         id=props.location.query.id         
+         //id=props.match.params.id         
         fetchData(id);                   
         }, []);
   return (               
